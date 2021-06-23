@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <include>
+      <uri>model://sun</uri>
+    </include>
+		
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+		
+    <include>
+      <uri>model://vr_controller_l</uri>
+    </include>
+		
+		<include>
+      <uri>model://vr_controller_r</uri>
+    </include>
+		
+		<include>
+      <uri>model://vr_HMD</uri>
+    </include>
+    
+  </world>
+</sdf>

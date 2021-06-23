@@ -1,0 +1,146 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='vr_HMD'>
+    <pose frame=''>0 0 0 0 0 0</pose>
+    <static>1</static>
+    <allow_auto_disable>1</allow_auto_disable>
+
+    <link name='link1'>
+      <pose frame=''>0 0.03 0 0 -0 0.08</pose>
+      <visual name='visual'>
+        <pose frame=''>-0.06 -0.03 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://vr_HMD/meshes/HMD.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+          <shader type='vertex'>
+            <normal_map>__default__</normal_map>
+          </shader>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+
+      <collision name='collision'>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <sensor name='camera_ros_l' type='camera'>
+        <pose>0.0 0 0 0 0 0</pose>
+        <always_on>1</always_on>
+        <update_rate>144</update_rate>
+        <visualize>0</visualize>
+
+        <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
+          <alwaysOn>1</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>to_VR_bring</cameraName>
+          <imageTopicName>imagel</imageTopicName> <!--xiugaiguo-->
+          <cameraInfoTopicName>cameral_infol</cameraInfoTopicName>
+          <frameName>camera_rgb_link_l</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+
+        <camera name='cam'>
+          <horizontal_fov>2.2</horizontal_fov>
+          <image>
+            <width>2048</width>
+            <height>2048</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.02</near>
+            <far>20</far>
+          </clip>
+        </camera>
+      </sensor>
+    </link>
+
+    <joint name="joint" type="fixed">
+      <parent>link1</parent>
+      <child>link2</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 0 0</xyz>
+      </axis>
+    </joint>
+
+    <link name='link2'>
+      <pose frame=''>0 -0.03 0 0 -0 -0.08</pose>
+      <visual name='visual'>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </visual>
+
+      <collision name='collision'>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <sensor name='camera_ros_r' type='camera'>
+        <pose >0 0 0 0 0 0</pose>
+        <always_on>1</always_on>
+        <update_rate>144</update_rate>
+        <visualize>0</visualize>
+
+        <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
+          <alwaysOn>1</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>to_VR_bring</cameraName>
+          <imageTopicName>imager</imageTopicName>
+          <cameraInfoTopicName>camerar_infor</cameraInfoTopicName>
+          <frameName>camera_rgb_link_r</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+
+        <camera name='cam2'>
+          <horizontal_fov>2.2</horizontal_fov>
+          <image>
+            <width>2048</width>
+            <height>2048</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.02</near>
+            <far>20</far>
+          </clip>
+        </camera>
+      </sensor>
+    </link>
+  </model>
+</sdf>
