@@ -3,7 +3,7 @@ ROS VR Bridge is a package for OpenVR developed by the caiwei. The main applicat
 
 OpenVR在ROS下的package。该软件包的主要应用是提供OpenVR与ROS之间的通信接口。目的是使用ROS消息和ROS服务来控制VR设备。
 
-![](C:\Users\lii\Documents\CAIWEI_Open_source\CAIWEI-VR-Bridge\assets\tf.gif)
+![](https://github.com/licaiwei/CAIWEI-VR-Bridge/blob/main/assets/tf.gif)
 
 ## 设备与环境
 
@@ -75,5 +75,5 @@ roslaunch ros_vr_gazebo vr_gazebo_demo.launch
 ```
 
 这将会启动gazebo环境，并加载`vr_controller_r`，`vr_controller_r`，`vr_HMD`三个模型，`vr_HMD`包含调教好的双目相机插件，发布`sensor_msgs::Image`类型的两个Topic`/to_VR_bring/imagel`和`/to_VR_bring/imager` ，时间戳一致。同时还会启动`vr_device_states_controller`节点，该节点订阅VR设备的TF，并将gazebo中的模型设置到对应的坐标。可以实现在gazebo中的VR效果，欢迎来到机器人的世界。
-![](C:\Users\lii\Documents\CAIWEI_Open_source\CAIWEI-VR-Bridge\assets\gazebo_vr.gif)
+![](https://github.com/licaiwei/CAIWEI-VR-Bridge/blob/main/assets/gazebo_vr.gif)
 
